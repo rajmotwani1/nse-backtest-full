@@ -1,0 +1,72 @@
+BLUE WHALE PRO – NSE NIFTY 500
+FRESH GITHUB PROJECT – START HERE
+
+THIS PACKAGE CONTAINS EXACTLY 4 FILES:
+1. app.py             Main Streamlit screener and backtesting app
+2. requirements.txt   Python libraries needed by Streamlit
+3. .gitignore         Keeps local secrets/cache out of Git
+4. START_HERE.txt     This setup guide
+
+STEP 1 – CREATE A NEW GITHUB REPOSITORY
+- Open GitHub and create a NEW empty repository.
+- Do not add a README, license or .gitignore on GitHub (the package already has its files).
+- Give it a name such as blue-whale-pro-nse.
+
+STEP 2 – UPLOAD THE FOUR FILES
+- Extract this ZIP on your computer.
+- Open the extracted BLUE_WHALE_PRO_NSE_FRESH_START_HERE folder.
+- Upload all four files directly into the ROOT of your new GitHub repository.
+- The repository root should show: app.py, requirements.txt, .gitignore, START_HERE.txt.
+- Do not upload the ZIP itself as a substitute for the extracted files.
+
+STEP 3 – CREATE THE STREAMLIT APP
+- Open https://share.streamlit.io/
+- Choose Create app / Deploy an app.
+- Select your new GitHub repository and branch (usually main).
+- Set Main file path to: app.py
+- Deploy the app.
+
+STEP 4 – ADD UPSTOX TOKEN SECURELY
+- In Streamlit, open your app's Settings → Secrets.
+- Add the following TOML, replacing both example values:
+
+APP_PASSWORD = "choose-a-private-password"
+UPSTOX_ACCESS_TOKEN = "paste-your-current-upstox-analytics-token"
+
+- Save the Secrets and reboot/redeploy the app.
+- Never put the real token/password in GitHub, app.py, this text file, or chat.
+- Upstox access tokens expire; replace the token in Streamlit Secrets when required.
+
+STEP 5 – FIRST TEST
+- Open the deployed app.
+- Start with a small stock batch (5 stocks) and one timeframe.
+- Confirm that NIFTY 500 constituents and Upstox instrument mapping load.
+- Run a small historical backtest before attempting larger batches.
+- Large multi-year scans over 500 stocks require many API requests. Use batches and allow time for API limits.
+
+WHAT IS INCLUDED IN THE APP
+- NIFTY 500 stock universe and Upstox NSE instrument mapping.
+- Market quote snapshot and Blue Whale scanner.
+- Historical backtesting with date selection starting from 1 Jan 2022.
+- Timeframes: 30m, 1H, 2H, 3H and 4H.
+- Separate selectable SL and Target methods: Fixed Points, Percentage, Risk:Reward, Signal Candle High/Low, ATR Based.
+- Editable SL/Target parameters, ATR period, quantity and estimated charges.
+- Trade history, stock ranking, performance statistics and CSV exports.
+- Year-wise overall performance and year-wise stock rankings.
+
+IMPORTANT BACKTEST NOTES
+- This is a research/backtesting tool; it does not place orders.
+- Entry is modelled at the next candle open after the signal candle closes.
+- If SL and Target are both touched in the same candle, SL is assumed first.
+- Year-wise reports classify trades by entry calendar year.
+- Results depend on data availability, selected dates/timeframe/stocks and SL/Target settings.
+- Verify the POC/signal calculation against your original Pine Script and validate API responses before using results for trading decisions.
+- Backtest fees are based on the simple per-side estimate entered in the app, not a complete statutory charges calculator.
+
+LOCAL RUN (OPTIONAL)
+1. Install Python.
+2. In this folder run: pip install -r requirements.txt
+3. Create .streamlit/secrets.toml with the same two TOML keys above.
+4. Run: streamlit run app.py
+
+END – KEEP YOUR UPSTOX TOKEN PRIVATE.
